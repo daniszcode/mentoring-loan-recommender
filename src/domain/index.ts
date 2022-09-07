@@ -30,7 +30,7 @@ const newPerson = new Person(
   "luisa@gmail.com",
   1985,
   "casada",
-  "sitio do pica-pau amarelo, 13"
+  "sitio do pica-pau verde, 13"
 );
 
 console.log(newPerson.printPersonData());
