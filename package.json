@@ -15,7 +15,7 @@
     "typescript": "*"
   },
   "scripts": {
-    "dev": "nodemon src/domain/index.ts",
+    "dev": "nodemon src/domain/Person.ts",
     "build": "sucrase ./src -d ./dist --transforms typescript imports"
   }
 }

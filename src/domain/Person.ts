@@ -35,3 +35,33 @@ const newPerson = new Person(
 
 console.log(newPerson.printPersonData());
 console.log(newPerson.getDocument());
+
+class Address extends Person {
+  street: String;
+  complement: String;
+  cep: Number;
+  city: String;
+  state: String;
+
+  constructor(
+    id,
+    name,
+    document,
+    email,
+    bornDate,
+    civilState,
+    address,
+    street,
+    complement,
+    cep,
+    city,
+    state
+  ) {
+    super(id, name, document, email, bornDate, civilState, address);
+    this.street = street;
+    this.complement = complement;
+    this.cep = cep;
+    this.city = city;
+    this.state = state;
+  }
+}

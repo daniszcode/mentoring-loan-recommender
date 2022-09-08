@@ -2,6 +2,6 @@
   "watch": ["src"],
   "ext": "ts",
   "execMap": {
-    "ts": "sucrase-node src/domain/index.ts "
+    "ts": "sucrase-node src/domain/Person.ts "
   }
 }
