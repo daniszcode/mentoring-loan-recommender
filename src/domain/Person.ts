@@ -28,9 +28,9 @@ const newPerson = new Person(
   "Luisa Mel",
   12345678,
   "luisa@gmail.com",
-  1985,
+  "1985 - 01 - 01",
   "casada",
-  "sitio do pica-pau verde, 13"
+  "sitio do pica-pau amarelo, 13"
 );
 
 console.log(newPerson.printPersonData());
