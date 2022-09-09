@@ -30,6 +30,11 @@ class Loan {
     this.installments = installments;
     this.totalAmount = totalAmount;
   }
+  createInstallmentPlan = (
+    totalAmount: Double,
+    quantityInstallments: Number,
+    tax: Double
+  ) => (Number(totalAmount) / Number(quantityInstallments)) * Number(tax);
 }
 
 class Installments extends Loan {
@@ -73,27 +78,17 @@ class Installments extends Loan {
     this.updatedAt = updateAt;
     this.status = status;
   }
-
-  createInstallmentPlan = (
-    totalAmount: Double,
-    quantityInstallments: Number,
-    tax: Double
-  ) => (Number(totalAmount) / Number(quantityInstallments)) * Number(tax);
 }
 
-const newLoanIns = new Installments(
+const newLoanIns = new Loan(
+  123,
   "emprestimo",
   10,
   "2000 - 01 - 01",
   "2000 - 01 - 01",
-  5,
-  20,
-  123,
-  456,
-  52,
-  20031,
   "2000 - 01 - 01",
-  "paid"
+  5,
+  20
 );
 
 console.log(newLoanIns.createInstallmentPlan(2, 5, 4));
