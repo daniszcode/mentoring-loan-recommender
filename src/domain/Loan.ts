@@ -80,7 +80,7 @@ class Installments extends Loan {
   }
 }
 
-const newLoanIns = new Loan(
+const dataLoan = new Loan(
   123,
   "emprestimo",
   10,
@@ -91,4 +91,4 @@ const newLoanIns = new Loan(
   20
 );
 
-console.log(newLoanIns.createInstallmentPlan(2, 5, 4));
+console.table(dataLoan.createInstallmentPlan(2, 5, 4));
