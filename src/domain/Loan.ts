@@ -91,4 +91,4 @@ const dataLoan = new Loan(
   20
 );
 
-console.table(dataLoan.createInstallmentPlan(2, 5, 4));
+console.log(dataLoan.createInstallmentPlan(2, 5, 4));
