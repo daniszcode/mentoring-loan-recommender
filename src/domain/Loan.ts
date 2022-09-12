@@ -34,7 +34,7 @@ class Loan {
     totalAmount: Double,
     quantityInstallments: number,
     tax: Double
-  ) => (totalAmount / quantityInstallments) * tax;
+  ): number => (totalAmount / quantityInstallments) * tax;
 }
 
 class Installments extends Loan {

@@ -17,10 +17,10 @@ class Person {
     this.address = address;
   }
 
-  printPersonData = () =>
+  printPersonData = (): string =>
     `id: ${this.id} name: ${this.name} document: ${this.document} email: ${this.email} borndate: ${this.bornDate} civil state: ${this.civilState} adress: ${this.address} `;
 
-  getDocument = () => `Documento: ${this.document}`;
+  getDocument = (): string => `Documento: ${this.document}`;
 }
 
 const newPerson = new Person(
