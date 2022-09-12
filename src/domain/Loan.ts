@@ -1,5 +1,5 @@
 type installments = [];
-type Double = Number;
+type Double = number;
 
 class Loan {
   id: String;
@@ -32,9 +32,9 @@ class Loan {
   }
   createInstallmentPlan = (
     totalAmount: Double,
-    quantityInstallments: Number,
+    quantityInstallments: number,
     tax: Double
-  ) => (Number(totalAmount) / Number(quantityInstallments)) * Number(tax);
+  ) => (totalAmount / quantityInstallments) * tax;
 }
 
 class Installments extends Loan {
