@@ -1,31 +1,31 @@
-type installments = [];
+type installments = Installments;
 type Double = number;
 
 class Loan {
-  id: String;
-  type: String;
+  id: number;
+  type: string;
   tax: Double;
   createdAt: Date;
   updatedAt: Date;
   paidAt: Date;
-  installments: installments;
+  installments: Installments;
   totalAmount: Double;
 
   constructor(
-    id,
-    type,
-    tax,
-    createdAt,
-    updateAt,
-    paidAt,
-    installments,
-    totalAmount
+    id: number,
+    type: string,
+    tax: Double,
+    createdAt: Date,
+    updatedAt: Date,
+    paidAt: Date,
+    installments: Installments,
+    totalAmount: Double
   ) {
     this.id = id;
     this.type = type;
     this.tax = tax;
     this.createdAt = createdAt;
-    this.updatedAt = updateAt;
+    this.updatedAt = updatedAt;
     this.paidAt = paidAt;
     this.installments = installments;
     this.totalAmount = totalAmount;
@@ -37,57 +37,52 @@ class Loan {
   ): number => (totalAmount / quantityInstallments) * tax;
 }
 
-class Installments extends Loan {
-  id: String;
-  number: Number;
+class Installments {
+  id: number;
+  number: number;
   amountToCharge: Double;
   dueDate: Date;
   createdAt: Date;
   updatedAt: Date;
-  status: String;
+  status: string;
 
   constructor(
-    type,
-    tax,
-    updateAt,
-    paidAt,
-    installments,
-    totalAmount,
-    id,
-    number,
-    amountToCharge,
-    dueDate,
-    createdAt,
-    status
+    id: number,
+    number: number,
+    amountToCharge: Double,
+    dueDate: Date,
+    createdAt: Date,
+    updatedAt: Date,
+    status: string
   ) {
-    super(
-      id,
-      type,
-      tax,
-      createdAt,
-      updateAt,
-      paidAt,
-      installments,
-      totalAmount
-    );
     this.id = id;
     this.number = number;
     this.amountToCharge = amountToCharge;
     this.dueDate = dueDate;
     this.createdAt = createdAt;
-    this.updatedAt = updateAt;
+    this.updatedAt = updatedAt;
     this.status = status;
   }
 }
+
+const dataInstallments = new Installments(
+  123,
+  45,
+  2000,
+  new Date(2022, 4, 15),
+  new Date(2022, 1, 7),
+  new Date(2022, 1, 7),
+  "paid"
+);
 
 const dataLoan = new Loan(
   123,
   "emprestimo",
   10,
-  "2000 - 01 - 01",
-  "2000 - 01 - 01",
-  "2000 - 01 - 01",
-  5,
+  new Date(2022, 4, 15),
+  new Date(2022, 1, 7),
+  new Date(2022, 1, 7),
+  dataInstallments,
   20
 );
 
