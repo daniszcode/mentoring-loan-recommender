@@ -1,13 +1,21 @@
 class Person {
-  id: Number;
-  name: String;
-  document: Number;
-  email: String;
+  id: number;
+  name: string;
+  document: number;
+  email: string;
   bornDate: Date;
-  civilState: String;
-  address: String;
+  civilState: string;
+  address: Address;
 
-  constructor(id, name, document, email, bornDate, civilState, address) {
+  constructor(
+    id: number,
+    name: string,
+    document: number,
+    email: string,
+    bornDate: Date,
+    civilState: string,
+    address: Address
+  ) {
     this.id = id;
     this.name = name;
     this.document = document;
@@ -17,47 +25,47 @@ class Person {
     this.address = address;
   }
 
-  printPersonData = (): string =>
-    `id: ${this.id} name: ${this.name} document: ${this.document} email: ${this.email} borndate: ${this.bornDate} civil state: ${this.civilState} adress: ${this.address} `;
+  printPersonData = (
+    id: number,
+    name: string,
+    document: number,
+    email: string,
+    bornDate: Date,
+    civilState: string,
+    street: string,
+    complement: string,
+    cep: string,
+    city: string,
+    state: string
+  ) => {
+    console.log(
+      id,
+      name,
+      document,
+      email,
+      bornDate,
+      civilState,
+      street,
+      complement,
+      cep,
+      city,
+      state
+    );
+  };
 
-  getDocument = (): string => `Documento: ${this.document}`;
+  getDocument = () => {
+    this.document;
+  };
 }
 
-const newPerson = new Person(
-  123,
-  "Luisa Mel",
-  12345678,
-  "luisa@gmail.com",
-  "1985 - 01 - 01",
-  "casada",
-  "sitio do pica-pau amarelo, 13"
-);
+class Address {
+  street: string;
+  complement: string;
+  cep: string;
+  city: string;
+  state: string;
 
-console.log(newPerson.printPersonData());
-console.log(newPerson.getDocument());
-
-class Address extends Person {
-  street: String;
-  complement: String;
-  cep: Number;
-  city: String;
-  state: String;
-
-  constructor(
-    id,
-    name,
-    document,
-    email,
-    bornDate,
-    civilState,
-    address,
-    street,
-    complement,
-    cep,
-    city,
-    state
-  ) {
-    super(id, name, document, email, bornDate, civilState, address);
+  constructor(street, complement, cep, city, state) {
     this.street = street;
     this.complement = complement;
     this.cep = cep;
@@ -65,3 +73,33 @@ class Address extends Person {
     this.state = state;
   }
 }
+
+const newPerson = new Person(
+  123,
+  "Harry",
+  12345678910,
+  "harry@potter.com",
+  new Date(1990, 4, 7),
+  "casado",
+  Address
+);
+
+console.table(newPerson);
+
+newPerson.printPersonData(
+  123,
+  "Harry",
+  12345678910,
+  "harry@potter.com",
+  new Date(1990, 4, 7),
+  "casado",
+  "Rua dos alfeneiros, n° 4",
+  "condado de surrey",
+  "1234567",
+  "Little Whinging",
+  "Londres"
+);
+
+newPerson.getDocument();
+
+exports.newPerson = newPerson;
