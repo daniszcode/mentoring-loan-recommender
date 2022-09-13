@@ -73,6 +73,13 @@ class Address {
     this.state = state;
   }
 }
+const personAddress = new Address(
+  "Rua dos alfeneiros, n° 4",
+  "condado de surrey",
+  "1234567",
+  "Little Whinging",
+  "Londres"
+);
 
 const newPerson = new Person(
   123,
@@ -81,7 +88,7 @@ const newPerson = new Person(
   "harry@potter.com",
   new Date(1990, 4, 7),
   "casado",
-  Address
+  personAddress
 );
 
 console.table(newPerson);
