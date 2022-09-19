@@ -109,4 +109,5 @@ newPerson.printPersonData(
 
 newPerson.getDocument();
 
-exports.newPerson = newPerson;
+exports.Person = Person;
+exports.personAddress = personAddress;

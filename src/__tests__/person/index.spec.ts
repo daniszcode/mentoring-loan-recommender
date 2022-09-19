@@ -1,34 +1,33 @@
-let { newPerson } = require("../../domain/Person");
+const Person = require("../../domain/Person").Person;
+const personAddress = require("../../domain/Person");
 
-test("test data response", () => {
-  console.log(
-    newPerson.printPersonData(
-      123,
-      "Harry",
-      12345678910,
-      "harry@potter.com",
-      new Date(1990, 4, 7),
-      "casado",
-      "Rua dos alfeneiros, n° 4",
-      "condado de surrey",
-      "1234567",
-      "Little Whinging",
-      "Londres"
-    )
+describe("Testando os valores de retorno da classe Person", () => {
+  const newPerson = new Person(
+    123,
+    "Harry",
+    12345678910,
+    "harry@potter.com",
+    new Date(1990, 4, 7),
+    "casado",
+    personAddress
   );
-  expect("address": [Function Address], "bornDate": 1990-05-07T03:00:00.000Z, "civilState": "casado", "document": 12345678910, "email": "harry@potter.com", "getDocument": [Function getDocument], "id": 123, "name": "Harry", "printPersonData": [Function printPersonData]).toBe(
-    newPerson.printPersonData(
-      123,
-      "Harry",
-      12345678910,
-      "harry@potter.com",
-      new Date(1990, 4, 7),
-      "casado",
-      "Rua dos alfeneiros, n° 4",
-      "condado de surrey",
-      "1234567",
-      "Little Whinging",
-      "Londres"
-    )
-  );
+
+  test("Testando o modulo name da classe Person", () => {
+    expect(newPerson.name).toBe("Harry");
+  });
+  test("Testando o modulo id da classe Person", () => {
+    expect(newPerson.id).toBe(123);
+  });
+  test("Testando o modulo document da classe Person", () => {
+    expect(newPerson.document).toBe(12345678910);
+  });
+  test("Testando o modulo email da classe Person", () => {
+    expect(newPerson.email).toBe("harry@potter.com");
+  });
+  test("Testando o modulo civilState da classe Person", () => {
+    expect(newPerson.civilState).toBe("casado");
+  });
+  test("Testando o modulo borndate da classe Person", () => {
+    expect(Date(1990, 4, 7)).toBe(newPerson.bornDate);
+  });
 });
