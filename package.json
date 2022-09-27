@@ -22,7 +22,7 @@
     "typescript": "*"
   },
   "scripts": {
-    "dev": "nodemon src/domain/Person.ts",
+    "dev": "nodemon src/domain/Loan.ts",
     "build": "sucrase ./src -d ./dist --transforms typescript imports",
     "test": "jest"
   },

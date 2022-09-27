@@ -47,26 +47,19 @@ class Installments {
   status: string;
   paidAt: Date | null;
 
-  constructor(
-    id,
-    number,
-    amountToCharge,
-    dueDate,
-    createdAt,
-    updatedAt,
-    status
-  ) {
+  constructor(id, number, amountToCharge, dueDate, createdAt, updatedAt) {
     this.id = id;
     this.number = number;
     this.amountToCharge = amountToCharge;
     this.dueDate = dueDate;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
-    this.status = status;
+    this.status = "open";
+    this.paidAt = null;
   }
 
   paidInstallment = (): void => {
-    if (this.status === "paid") {
+    if (this.status !== "paid") {
       (this.status = "Paid"), (this.paidAt = new Date());
     }
   };
