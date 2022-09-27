@@ -1,4 +1,4 @@
-class Person {
+export class Person {
   id: number;
   name: string;
   document: number;
@@ -25,31 +25,19 @@ class Person {
     this.address = address;
   }
 
-  printPersonData = (
-    id: number,
-    name: string,
-    document: number,
-    email: string,
-    bornDate: Date,
-    civilState: string,
-    street: string,
-    complement: string,
-    cep: string,
-    city: string,
-    state: string
-  ) => {
+  printPersonData = () => {
     console.log(
-      id,
-      name,
-      document,
-      email,
-      bornDate,
-      civilState,
-      street,
-      complement,
-      cep,
-      city,
-      state
+      this.id,
+      this.name,
+      this.document,
+      this.email,
+      this.bornDate,
+      this.civilState,
+      this.address.street,
+      this.address.complement,
+      this.address.cep,
+      this.address.city,
+      this.address.state
     );
   };
 
@@ -58,7 +46,7 @@ class Person {
   };
 }
 
-class Address {
+export class Address {
   street: string;
   complement: string;
   cep: string;
@@ -73,41 +61,3 @@ class Address {
     this.state = state;
   }
 }
-const personAddress = new Address(
-  "Rua dos alfeneiros, n° 4",
-  "condado de surrey",
-  "1234567",
-  "Little Whinging",
-  "Londres"
-);
-
-const newPerson = new Person(
-  123,
-  "Harry",
-  12345678910,
-  "harry@potter.com",
-  new Date(1990, 4, 7),
-  "casado",
-  personAddress
-);
-
-console.table(newPerson);
-
-newPerson.printPersonData(
-  123,
-  "Harry",
-  12345678910,
-  "harry@potter.com",
-  new Date(1990, 4, 7),
-  "casado",
-  "Rua dos alfeneiros, n° 4",
-  "condado de surrey",
-  "1234567",
-  "Little Whinging",
-  "Londres"
-);
-
-newPerson.getDocument();
-
-exports.Person = Person;
-exports.personAddress = personAddress;

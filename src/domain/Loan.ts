@@ -45,15 +45,16 @@ class Installments {
   createdAt: Date;
   updatedAt: Date;
   status: string;
+  paidAt: Date | null;
 
   constructor(
-    id: number,
-    number: number,
-    amountToCharge: Double,
-    dueDate: Date,
-    createdAt: Date,
-    updatedAt: Date,
-    status: string
+    id,
+    number,
+    amountToCharge,
+    dueDate,
+    createdAt,
+    updatedAt,
+    status
   ) {
     this.id = id;
     this.number = number;
@@ -62,7 +63,15 @@ class Installments {
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
     this.status = status;
+    this.paidAt = this.paidAt;
   }
+
+  paidInstallment = () => {
+    if (this.status === "paid") {
+      return (this.status = "Paid"), (this.paidAt = new Date());
+    }
+    return (this.paidAt = null);
+  };
 }
 
 const dataInstallments = new Installments(
@@ -87,3 +96,6 @@ const dataLoan = new Loan(
 );
 
 console.log(dataLoan.createInstallmentPlan(2, 5, 4));
+console.log(dataInstallments.paidInstallment());
+console.log(dataInstallments.paidAt);
+console.log(dataInstallments.status);
