@@ -47,14 +47,22 @@ class Installments {
   status: string;
   paidAt: Date | null;
 
-  constructor(id, number, amountToCharge, dueDate, createdAt, updatedAt) {
+  constructor(
+    id,
+    number,
+    amountToCharge,
+    dueDate,
+    createdAt,
+    updatedAt,
+    status
+  ) {
     this.id = id;
     this.number = number;
     this.amountToCharge = amountToCharge;
     this.dueDate = dueDate;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
-    this.status = "open";
+    status = "open";
     this.paidAt = null;
   }
 
