@@ -63,14 +63,12 @@ class Installments {
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
     this.status = status;
-    this.paidAt = this.paidAt;
   }
 
-  paidInstallment = () => {
+  paidInstallment = (): void => {
     if (this.status === "paid") {
-      return (this.status = "Paid"), (this.paidAt = new Date());
+      (this.status = "Paid"), (this.paidAt = new Date());
     }
-    return (this.paidAt = null);
   };
 }
 
