@@ -1,4 +1,3 @@
-type installments = Installments;
 type Double = number;
 
 class Loan {
@@ -8,18 +7,18 @@ class Loan {
   createdAt: Date;
   updatedAt: Date;
   paidAt: Date;
-  installments: Installments;
+  installments: Installments[];
   totalAmount: Double;
 
   constructor(
-    id: number,
-    type: string,
-    tax: Double,
-    createdAt: Date,
-    updatedAt: Date,
-    paidAt: Date,
-    installments: Installments,
-    totalAmount: Double
+    id,
+    type,
+    tax,
+    createdAt,
+    updatedAt,
+    paidAt,
+    installments,
+    totalAmount
   ) {
     this.id = id;
     this.type = type;
@@ -30,11 +29,26 @@ class Loan {
     this.installments = installments;
     this.totalAmount = totalAmount;
   }
+
   createInstallmentPlan = (
-    totalAmount: Double,
+    totalAmount: number,
     quantityInstallments: number,
-    tax: Double
-  ): number => (totalAmount / quantityInstallments) * tax;
+    tax: number
+  ) => {
+    const amount = (totalAmount / quantityInstallments) * tax;
+
+    for (let i = 0; i < quantityInstallments; i++) {
+      let installment = new Installments(
+        "122" + i,
+        i + 1,
+        amount,
+        new Date(2022, 4, 15),
+        new Date(),
+        new Date()
+      );
+      this.installments.push(installment);
+    }
+  };
 }
 
 class Installments {
@@ -47,41 +61,25 @@ class Installments {
   status: string;
   paidAt: Date | null;
 
-  constructor(
-    id,
-    number,
-    amountToCharge,
-    dueDate,
-    createdAt,
-    updatedAt,
-    status
-  ) {
+  constructor(id, number, amountToCharge, dueDate, createdAt, updatedAt) {
     this.id = id;
     this.number = number;
     this.amountToCharge = amountToCharge;
     this.dueDate = dueDate;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
-    status = "open";
     this.paidAt = null;
+    this.status = "open";
   }
 
-  paidInstallment = (): void => {
+  public paidInstallment(): void {
     if (this.status !== "paid") {
-      (this.status = "Paid"), (this.paidAt = new Date());
+      (this.status = "paid"), (this.paidAt = new Date());
+    } else {
+      `Parcela já está paga!`;
     }
-  };
+  }
 }
-
-const dataInstallments = new Installments(
-  123,
-  45,
-  2000,
-  new Date(2022, 4, 15),
-  new Date(2022, 1, 7),
-  new Date(2022, 1, 7),
-  "paid"
-);
 
 const dataLoan = new Loan(
   123,
@@ -90,11 +88,6 @@ const dataLoan = new Loan(
   new Date(2022, 4, 15),
   new Date(2022, 1, 7),
   new Date(2022, 1, 7),
-  dataInstallments,
+  [],
   20
 );
-
-console.log(dataLoan.createInstallmentPlan(2, 5, 4));
-console.log(dataInstallments.paidInstallment());
-console.log(dataInstallments.paidAt);
-console.log(dataInstallments.status);
