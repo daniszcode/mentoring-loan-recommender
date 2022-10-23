@@ -72,7 +72,7 @@ class Installment {
     this.status = "open";
   }
 
-  public paidInstallment(): void {
+  public payInstallment(): void {
     if (this.status !== "paid") {
       (this.status = "paid"), (this.paidAt = new Date());
     } else {
