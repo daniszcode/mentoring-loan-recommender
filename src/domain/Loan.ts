@@ -7,7 +7,7 @@ class Loan {
   createdAt: Date;
   updatedAt: Date;
   paidAt: Date;
-  installments: Installments[];
+  installments: Installment[];
   totalAmount: Double;
 
   constructor(
@@ -38,7 +38,7 @@ class Loan {
     const amount = (totalAmount / quantityInstallments) * tax;
 
     for (let i = 0; i < quantityInstallments; i++) {
-      let installment = new Installments(
+      let installment = new Installment(
         "122" + i,
         i + 1,
         amount,
@@ -51,7 +51,7 @@ class Loan {
   };
 }
 
-class Installments {
+class Installment {
   id: number;
   number: number;
   amountToCharge: Double;
