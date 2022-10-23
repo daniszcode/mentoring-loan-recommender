@@ -1,7 +1,7 @@
 type Double = number;
 
 class Loan {
-  id: number;
+  id: string;
   type: string;
   tax: Double;
   createdAt: Date;

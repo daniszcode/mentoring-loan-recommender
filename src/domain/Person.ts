@@ -1,5 +1,5 @@
 export class Person {
-  id: number;
+  id: string;
   name: string;
   document: number;
   email: string;
@@ -8,7 +8,7 @@ export class Person {
   address: Address;
 
   constructor(
-    id: number,
+    id: string,
     name: string,
     document: number,
     email: string,

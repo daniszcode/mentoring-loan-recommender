@@ -10,7 +10,7 @@ describe("Testando os valores de retorno da classe Person", () => {
   );
 
   const newPerson = new Person(
-    123,
+    "123",
     "Harry",
     12345678910,
     "harry@potter.com",
