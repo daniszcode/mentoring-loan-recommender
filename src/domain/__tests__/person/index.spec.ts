@@ -1,4 +1,4 @@
-import { Address, Person } from "../../domain/Person";
+import { Address, Person } from "../../Person";
 
 describe("Testando os valores de retorno da classe Person", () => {
   const personAddress = new Address(
@@ -36,8 +36,9 @@ describe("Testando os valores de retorno da classe Person", () => {
   });
   test("Testando o atributo borndate da classe Person", () => {
     const data = new Date(1990, 4, 7);
+    console.log(data.toLocaleDateString());
     expect(data.getMonth()).toBe(newPerson.bornDate.getMonth());
     expect(data.getFullYear()).toBe(newPerson.bornDate.getFullYear());
-    expect(data.getDay()).toBe(newPerson.bornDate.getDay());
+    expect(data.getDate()).toBe(newPerson.bornDate.getDate());
   });
 });

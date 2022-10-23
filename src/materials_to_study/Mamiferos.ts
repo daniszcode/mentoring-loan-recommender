@@ -1,13 +1,14 @@
 import { Animal } from "./Animal";
+
 export class Mamifero extends Animal {
-  pelagem: String;
+  pelagem: string;
 
   constructor(
-    nome: String,
-    especie: String,
-    classe: String,
-    genero: String,
-    pelagem: String
+    nome: string,
+    especie: string,
+    classe: string,
+    genero: string,
+    pelagem: string
   ) {
     super(nome, especie, classe, genero);
     this.pelagem = pelagem;
@@ -15,15 +16,15 @@ export class Mamifero extends Animal {
 }
 
 export class Cachorro extends Mamifero {
-  raca: String;
+  raca: string;
 
   constructor(
-    nome: String,
-    especie: String,
-    classe: String,
-    genero: String,
-    pelagem: String,
-    raca: String
+    nome: string,
+    especie: string,
+    classe: string,
+    genero: string,
+    pelagem: string,
+    raca: string
   ) {
     super(nome, especie, classe, genero, pelagem);
     this.raca = raca;
