@@ -1,12 +1,10 @@
 var moment = require("moment"); // require
 moment().format();
 
-type Double = number;
-
 export class Invoice {
   id: string;
   type: string;
-  amount: Double;
+  amount: number;
   createdAt: Date;
   updatedAt: Date;
   expired: boolean;
