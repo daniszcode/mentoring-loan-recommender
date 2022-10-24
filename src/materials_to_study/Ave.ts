@@ -27,10 +27,6 @@ export class Ave extends Animal {
       console.log("Esta espécie de ave não voa");
     }
   };
-
-  override emitirSom = (): void => {
-    console.log("có-có-ri-có");
-  };
 }
 
 class Galinha extends Ave {
@@ -45,6 +41,9 @@ class Galinha extends Ave {
   ) {
     super(nome, especie, classe, genero, corPenas, tipoBico, voa);
   }
+  override emitirSom = (): void => {
+    console.log("có-có-ri-có");
+  };
 }
 
 const galinacea = new Galinha(

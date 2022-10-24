@@ -1,3 +1,6 @@
+var moment = require("moment"); // require
+moment().format();
+
 type Double = number;
 
 export class Invoice {
@@ -17,7 +20,6 @@ export class Invoice {
     amount,
     createdAt,
     updatedAt,
-    expired,
     installments,
     loanId,
     dueDate
@@ -27,17 +29,15 @@ export class Invoice {
     this.amount = amount;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
-    this.expired = expired;
     this.installments = installments;
     this.loanId = loanId;
     this.dueDate = dueDate;
   }
-
   checkIfExpired() {
     const currentDay = new Date().toLocaleDateString("br-BR");
-    return this.dueDate.toLocaleDateString("br-BR") === currentDay
-      ? (this.expired = true)
-      : (this.expired = false);
+    return moment(currentDay).isBefore(this.dueDate)
+      ? (this.expired = false)
+      : (this.expired = true);
   }
 }
 
@@ -47,8 +47,10 @@ const invoice_1 = new Invoice(
   20,
   new Date(2022, 10, 2).toLocaleDateString("br-BR"),
   new Date().toLocaleDateString("br-BR"),
-  false,
   [],
   "LOA45645645",
   new Date(2022, 9, 17)
 );
+
+console.log(invoice_1.checkIfExpired());
+console.log(invoice_1.expired);
