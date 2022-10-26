@@ -1,8 +1,9 @@
 {
   "devDependencies": {
-    "@babel/core": "^7.19.0",
-    "@babel/preset-env": "^7.19.0",
+    "@babel/core": "^7.19.1",
+    "@babel/preset-env": "^7.19.1",
     "@babel/preset-typescript": "^7.18.6",
+    "@types/jest": "^29.0.3",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.36.2",
     "babel-jest": "^29.0.3",
@@ -17,11 +18,26 @@
     "nodemon": "^2.0.19",
     "prettier": "^2.7.1",
     "sucrase": "^3.25.0",
+    "ts-jest": "^29.0.1",
     "typescript": "*"
   },
   "scripts": {
-    "dev": "nodemon src/domain/Person.ts",
+    "dev": "nodemon src/domain/Invoice.ts",
     "build": "sucrase ./src -d ./dist --transforms typescript imports",
     "test": "jest"
-  }
+  },
+  "name": "mentoring-loan-recommender",
+  "description": "",
+  "version": "1.0.0",
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daniszcode/mentoring-loan-recommender.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daniszcode/mentoring-loan-recommender/issues"
+  },
+  "homepage": "https://github.com/daniszcode/mentoring-loan-recommender#readme"
 }

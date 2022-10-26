@@ -1,14 +1,13 @@
-type installments = [];
 type Double = number;
 
 class Loan {
-  id: String;
-  type: String;
+  id: string;
+  type: string;
   tax: Double;
   createdAt: Date;
   updatedAt: Date;
   paidAt: Date;
-  installments: installments;
+  installments: Installment[];
   totalAmount: Double;
 
   constructor(
@@ -16,7 +15,7 @@ class Loan {
     type,
     tax,
     createdAt,
-    updateAt,
+    updatedAt,
     paidAt,
     installments,
     totalAmount
@@ -25,58 +24,62 @@ class Loan {
     this.type = type;
     this.tax = tax;
     this.createdAt = createdAt;
-    this.updatedAt = updateAt;
+    this.updatedAt = updatedAt;
     this.paidAt = paidAt;
     this.installments = installments;
     this.totalAmount = totalAmount;
   }
+
   createInstallmentPlan = (
-    totalAmount: Double,
+    totalAmount: number,
     quantityInstallments: number,
-    tax: Double
-  ): number => (totalAmount / quantityInstallments) * tax;
+    tax: number
+  ) => {
+    const amount = (totalAmount / quantityInstallments) * tax;
+
+    for (let i = 0; i < quantityInstallments; i++) {
+      let installment = new Installment(
+        "122" + i,
+        i + 1,
+        amount,
+        new Date(2022, 4, 15),
+        new Date(),
+        new Date()
+      );
+      this.installments.push(installment);
+    }
+  };
 }
 
-class Installments extends Loan {
-  id: String;
-  number: Number;
+class Installment {
+  id: number;
+  number: number;
   amountToCharge: Double;
   dueDate: Date;
   createdAt: Date;
   updatedAt: Date;
-  status: String;
+  status: string;
+  paidAt: Date | null;
 
-  constructor(
-    type,
-    tax,
-    updateAt,
-    paidAt,
-    installments,
-    totalAmount,
-    id,
-    number,
-    amountToCharge,
-    dueDate,
-    createdAt,
-    status
-  ) {
-    super(
-      id,
-      type,
-      tax,
-      createdAt,
-      updateAt,
-      paidAt,
-      installments,
-      totalAmount
-    );
+  constructor(id, number, amountToCharge, dueDate, createdAt, updatedAt) {
     this.id = id;
     this.number = number;
     this.amountToCharge = amountToCharge;
     this.dueDate = dueDate;
     this.createdAt = createdAt;
-    this.updatedAt = updateAt;
-    this.status = status;
+    this.updatedAt = updatedAt;
+    this.paidAt = null;
+    this.status = "open";
+  }
+
+  public payInstallment(): void {
+    let status = this.status;
+
+    if (status !== "paid") {
+      (this.status = "paid"), (this.paidAt = new Date());
+    } else {
+      throw new Error(`Parcela já está paga!`);
+    }
   }
 }
 
@@ -84,11 +87,21 @@ const dataLoan = new Loan(
   123,
   "emprestimo",
   10,
-  "2000 - 01 - 01",
-  "2000 - 01 - 01",
-  "2000 - 01 - 01",
-  5,
+  new Date(2022, 4, 15),
+  new Date(2022, 1, 7),
+  new Date(2022, 1, 7),
+  [],
   20
 );
 
-console.log(dataLoan.createInstallmentPlan(2, 5, 4));
+const installment = new Installment(
+  "12",
+  123,
+  10,
+  new Date(2022, 4, 15),
+  new Date(2022, 4, 15),
+  new Date(2022, 4, 15)
+);
+console.log(installment.payInstallment());
+console.log(installment.status);
+console.log(installment.paidAt);
