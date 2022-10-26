@@ -73,10 +73,12 @@ class Installment {
   }
 
   public payInstallment(): void {
-    if (this.status !== "paid") {
+    let status = this.status;
+
+    if (status !== "paid") {
       (this.status = "paid"), (this.paidAt = new Date());
     } else {
-      `Parcela já está paga!`;
+      throw new Error(`Parcela já está paga!`);
     }
   }
 }
@@ -91,3 +93,15 @@ const dataLoan = new Loan(
   [],
   20
 );
+
+const installment = new Installment(
+  "12",
+  123,
+  10,
+  new Date(2022, 4, 15),
+  new Date(2022, 4, 15),
+  new Date(2022, 4, 15)
+);
+console.log(installment.payInstallment());
+console.log(installment.status);
+console.log(installment.paidAt);

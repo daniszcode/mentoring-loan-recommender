@@ -45,19 +45,18 @@ describe("when i called the invoice...", () => {
       .spyOn(Invoice.prototype, "checkIfExpired")
       .mockImplementation(() => false);
 
-    const InstaciaOfInvoice = new Invoice(
+    const instanceOfInvoice = new Invoice(
       "123",
       "regular",
       20,
       new Date(2022, 10, 2).toLocaleDateString("br-BR"),
       new Date().toLocaleDateString("br-BR"),
-      false,
       [],
       "LOA45645645",
       new Date(2022, 9, 17)
     );
 
-    InstaciaOfInvoice.checkIfExpired();
+    instanceOfInvoice.checkIfExpired();
     expect(getterMethodMock).toHaveBeenCalled();
   });
 });
