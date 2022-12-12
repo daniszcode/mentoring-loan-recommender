@@ -1,3 +1,5 @@
+import { PaymentMethod } from "./PaymentMethod";
+
 var moment = require("moment"); // require
 moment().format();
 
@@ -11,6 +13,7 @@ export class Invoice {
   installments: string[];
   loanId: string;
   dueDate: Date;
+  paymentMethod: PaymentMethod;
 
   constructor(
     id,
@@ -20,7 +23,8 @@ export class Invoice {
     updatedAt,
     installments,
     loanId,
-    dueDate
+    dueDate,
+    paymentMethod
   ) {
     this.id = id;
     this.type = type;
@@ -30,6 +34,7 @@ export class Invoice {
     this.installments = installments;
     this.loanId = loanId;
     this.dueDate = dueDate;
+    this.paymentMethod = paymentMethod;
   }
   checkIfExpired() {
     const currentDay = new Date().toLocaleDateString("br-BR");
@@ -47,8 +52,18 @@ const invoice_1 = new Invoice(
   new Date().toLocaleDateString("br-BR"),
   [],
   "LOA45645645",
-  new Date(2022, 9, 17)
+  new Date(2022, 9, 17),
+  new PaymentMethod(
+    "LOA45645645",
+    [],
+    20,
+    new Date(2022, 10, 2).toLocaleDateString("br-BR"),
+    new Date().toLocaleDateString("br-BR"),
+    true,
+    "123"
+  )
 );
 
 console.log(invoice_1.checkIfExpired());
+console.log(invoice_1.expired);
 console.log(invoice_1.expired);

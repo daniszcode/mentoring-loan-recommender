@@ -102,6 +102,27 @@ const installment = new Installment(
   new Date(2022, 4, 15),
   new Date(2022, 4, 15)
 );
-console.log(installment.payInstallment());
-console.log(installment.status);
-console.log(installment.paidAt);
+
+class A {
+  a() {
+    console.log("sou declarada em A");
+  }
+}
+
+class B {
+  a() {
+    console.log("sou declarada em B");
+  }
+}
+
+class AB extends B {
+  lendoB() {
+    console.log(this.a());
+  }
+}
+
+const res = new AB();
+console.log(res.lendoB());
+// console.log(installment.payInstallment());
+// console.log(installment.status);
+// console.log(installment.paidAt);

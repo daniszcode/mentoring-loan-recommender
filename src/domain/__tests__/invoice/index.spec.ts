@@ -1,4 +1,5 @@
 import { Invoice } from "../../Invoice";
+import { PaymentMethod } from "../../PaymentMethod";
 import { invoiceMock } from "../../__mocks__/invoiceMock";
 describe("when i called the invoice...", () => {
   it("id attribute are called", () => {
@@ -19,8 +20,8 @@ describe("when i called the invoice...", () => {
     );
   });
   it("updatedAt attribute are called", () => {
-    expect(invoiceMock.updatedAt.toLocaleLowerCase()).toStrictEqual(
-      "23/10/2022"
+    expect(invoiceMock.updatedAt.toLocaleLowerCase()).toEqual(
+      new Date().toLocaleDateString("br-BR")
     );
   });
   it("expired attribute are called", () => {
@@ -41,6 +42,11 @@ describe("when i called the invoice...", () => {
     );
   });
   it("custom methods are called", () => {
+    enum PaymentType {
+      "boleto",
+      "pix",
+    }
+
     const getterMethodMock = jest
       .spyOn(Invoice.prototype, "checkIfExpired")
       .mockImplementation(() => false);
@@ -53,7 +59,8 @@ describe("when i called the invoice...", () => {
       new Date().toLocaleDateString("br-BR"),
       [],
       "LOA45645645",
-      new Date(2022, 9, 17)
+      new Date(2022, 9, 17),
+      new PaymentMethod(PaymentType.boleto, 1212, "1234")
     );
 
     instanceOfInvoice.checkIfExpired();
