@@ -17,7 +17,9 @@ export class PaymentMethod {
     this.id = v4();
     this.amount = amount;
     this.createdAt = new Date();
-    this.expired = false;
+    if (PaymentType.boleto) {
+      this.expired = false;
+    }
     this.invoiceId = invoiceId;
     this.type = type;
     this.updatedAt = new Date();

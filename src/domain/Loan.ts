@@ -76,7 +76,8 @@ class Installment {
     let status = this.status;
 
     if (status !== "paid") {
-      (this.status = "paid"), (this.paidAt = new Date());
+      this.status = "paid";
+      this.paidAt = new Date();
     } else {
       throw new Error(`Parcela já está paga!`);
     }
@@ -103,26 +104,6 @@ const installment = new Installment(
   new Date(2022, 4, 15)
 );
 
-class A {
-  a() {
-    console.log("sou declarada em A");
-  }
-}
-
-class B {
-  a() {
-    console.log("sou declarada em B");
-  }
-}
-
-class AB extends B {
-  lendoB() {
-    console.log(this.a());
-  }
-}
-
-const res = new AB();
-console.log(res.lendoB());
-// console.log(installment.payInstallment());
-// console.log(installment.status);
-// console.log(installment.paidAt);
+console.log(installment.payInstallment());
+console.log(installment.status);
+console.log(installment.paidAt);

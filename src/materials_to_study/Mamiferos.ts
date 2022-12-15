@@ -33,4 +33,10 @@ export class Cachorro extends Mamifero {
   override emitirSom = (): void => {
     console.log("Au au au!");
   };
+
+  override locomoverSe = (): void => {
+    console.log(
+      "os cães são quadrúpedes, o que quer dizer que se locomovem apoiando-se nas patas dianteiras e traseiras. Mais precisamente, eles se apoiam na pontinha das patas, já que os cães são digitígrados."
+    );
+  };
 }
