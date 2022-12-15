@@ -44,6 +44,12 @@ class Galinha extends Ave {
   override emitirSom = (): void => {
     console.log("có-có-ri-có");
   };
+
+  override locomoverSe = (): void => {
+    console.log(
+      "Assim como seus parentes pavões e faisões, as galinhas que encontramos em fazendas, sítios e granjas apresentam um “voo batido”: elas batem rapidamente as asas e se movimentam por até 10 metros, voltando rapidamente ao chão."
+    );
+  };
 }
 
 const galinacea = new Galinha(
