@@ -1,0 +1,84 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: API de Loans
+basePath: /api
+paths:
+  /loans:
+    post:
+      summary: Cria um novo Loan
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: loan
+          description: Dados do novo Loan
+          required: true
+          schema:
+            $ref: '#/definitions/Loan'
+      responses:
+        '201':
+          description: Loan criado com sucesso {acertou miséravi XD}
+          schema:
+            $ref: '#/definitions/Loan'
+        '400':
+          description: Erro na validação dos dados da requisição
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+        '500':
+          description: Erro interno no servidor
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+definitions:
+  Loan:
+    type: object
+    properties:
+      id:
+        type: string
+      type:
+        type: string
+      tax:
+        type: number
+      createdAt:
+        type: string
+        format: date
+      updatedAt:
+        type: string
+        format: date
+      paidAt:
+        type: string || null
+        format: date
+      installments:
+        type: array
+        items:
+          $ref: '#/definitions/Installment'
+      totalAmount:
+        type: number
+  Installment:
+    type: object
+    properties:
+      number:
+        type: string
+      dueDate:
+        type: string
+        format: date
+      value:
+        type: number
+      status:
+        type: string
+      amountToCharge: number
+      createdAt:
+          type: string
+          format: date
+      updatedAt:
+        type: string
+        format: date
+      paidAt:
+        type: string || null
+        format: date
