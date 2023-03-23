@@ -40,7 +40,3 @@ class Controller {
     }
   }
 }
-
-const teste = new Controller("1");
-console.log(teste.createLoan());
-console.log(teste.loanService);
