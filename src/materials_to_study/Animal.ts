@@ -1,10 +1,10 @@
 export class Animal {
-  nome: String;
-  especie: String;
-  classe: String;
-  genero: String;
+  nome: string;
+  especie: string;
+  classe: string;
+  genero: string;
 
-  constructor(nome: String, especie: String, classe: String, genero: String) {
+  constructor(nome: string, especie: string, classe: string, genero: string) {
     this.nome = nome;
     this.especie = especie;
     this.classe = classe;
@@ -12,4 +12,5 @@ export class Animal {
   }
 
   emitirSom = (): void => {};
+  locomoverSe = (): void => {};
 }
